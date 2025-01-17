@@ -12,3 +12,17 @@ from django import forms
 class LoginForm(forms.Form):
     email = forms.EmailField(max_length=254, required=True, label="Email")
     password = forms.CharField(widget=forms.PasswordInput, required=True, label="Password")
+    
+    
+from .models import ContactDetail
+    
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model=ContactDetail 
+        fields=['name','email','subject','message']
+        # widgets = {
+        #     'name': forms.TextInput(attrs={'class': 'form-control'}),
+        #     'email': forms.EmailInput(attrs={'class': 'form-control'}),
+        #     'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+        #     'message': forms.Textarea(attrs={'class': 'form-control'}),
+        # }

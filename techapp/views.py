@@ -148,3 +148,25 @@ def user_login(request):
 
     return render(request, "login.html", {"form": form, "error_message": error_message})
 
+
+
+from django.shortcuts import render, redirect
+from .forms import ContactForm
+from .models import ContactDetail
+
+def contact_view(request):
+    if request.method == 'POST':
+        form=ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('contactlist')
+        
+    else:
+        form=ContactForm()
+    
+    return render(request, 'contact.html', {'form':form})
+
+def contactlist(request):
+    detail=ContactDetail.objects.all()
+    return render(request, 'contact.html', {'detail':detail})
+   

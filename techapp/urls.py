@@ -1,6 +1,7 @@
 from django.urls import path
 from techapp import views
 
+
 urlpatterns = [
     path('',views.index,name='index'),
     path('product/',views.product,name='product'),
@@ -17,5 +18,7 @@ urlpatterns = [
     path('headphone/',views.headphone,name='headphone'),
     path('speaker/',views.speaker,name='speaker'),
     path('joystick/',views.joystick,name='joystick'),
+    path('contact_view/', views.contact_view, name='contact_view'),
+    path('contactlist/', views.contactlist, name='contactlist'),
 
 ]
