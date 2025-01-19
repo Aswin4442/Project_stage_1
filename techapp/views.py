@@ -1,5 +1,5 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, get_object_or_404
+from .models import Gadget
 # Create your views here.
 
 from django.http import HttpResponse
@@ -10,8 +10,15 @@ def index(request):
     return HttpResponse(template.render())
 
 def product(request):
-    template = loader.get_template('product-single.html')
-    return HttpResponse(template.render())
+    gadgets=Gadget.objects.all()
+    return render(request,'product-single.html',{'gadgets':gadgets})
+
+
+def product_detail(request, product_id):
+    things=get_object_or_404(Gadget,id=product_id)
+    return render(request,'gadget_detail.html',{'things':things})
+
+    
 
 def about(request):
     template = loader.get_template('about.html')
@@ -169,4 +176,32 @@ def contact_view(request):
 def contactlist(request):
     detail=ContactDetail.objects.all()
     return render(request, 'contact.html', {'detail':detail})
+
+
+# # ####################################33
+
+
+# # views.py
+# from django.shortcuts import render, redirect
+# from django.contrib.auth.decorators import login_required
+# from .forms import UserUpdateForm, ProfileUpdateForm
+
+# def my_account(request):
+#     if request.method == 'POST':
+#         user_form = UserUpdateForm(request.POST, instance=request.user)
+#         profile_form = ProfileUpdateForm(request.POST, instance=request.user.userprofile)
+#         if user_form.is_valid() and profile_form.is_valid():
+#             user_form.save()
+#             profile_form.save()
+#             return redirect('my_account')
+#     else:
+#         user_form = UserUpdateForm(instance=request.user)
+#         profile_form = ProfileUpdateForm(instance=request.user.userprofile)
+
+#     context = {
+#         'user_form': user_form,
+#         'profile_form': profile_form
+#     }
+#     return render(request, 'my_account.html', context)
+
    

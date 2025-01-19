@@ -20,5 +20,7 @@ urlpatterns = [
     path('joystick/',views.joystick,name='joystick'),
     path('contact_view/', views.contact_view, name='contact_view'),
     path('contactlist/', views.contactlist, name='contactlist'),
+    # path('my_account/', views.my_account, name='my_account'),
+    path('things/<int:product_id>/',views.product_detail,name='product_detail'),
 
 ]

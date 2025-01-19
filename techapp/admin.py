@@ -2,5 +2,9 @@ from django.contrib import admin
 
 # # Register your models here.
 
-# from .models import product
-# admin.site.register(product)
+from .models import Gadget
+admin.site.register(Gadget)
+
+
+#  username=ASWIN.BABU
+# password=aswinbabu7902

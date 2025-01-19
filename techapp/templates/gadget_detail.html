@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="container">
+            <div class="product-wrapper">
+                <div class="product-images">
+                    {% if things.image %}
+                    <img src="{{ things.image.url }}" alt="{{ things.productname }}" width="300">
+                    {% endif %}
+                </div>
+                <div class="product-content">
+                    <h2 class="product-title">{{ things.productname }}</h2>
+                    <p>{{ things.description }}</p>
+                    <div class="product-price">
+                        <span>${{ things.price }}</span>
+                    </div>
+                    <div class="purchase-info">
+                        <button class="btn">add cart</button>
+                        <button class="btn">buy now</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
